@@ -21,32 +21,50 @@ function writePassword() {
 
 //Creating password
 var generatePassword = function() {
-  var lengthChar = window.prompt("Please choose a password length of 8-128 characters.");
+  var lengthOfChar = window.prompt("Please choose a password length of 8-128 characters.");
 
-  if (lengthChar >= 8 && lengthChar <= 128) {
-    window.alert("Thank you, a password of " + lengthChar + " characters will be generated, please answer the following questions for your password.");
+  if (lengthOfChar >= 8 && lengthOfChar <= 128) {
+    window.alert("Thank you, a password of " + lengthOfChar + " characters will be generated, please answer the following questions for your password.");
   } else {
     window.alert("Please try again.");
   generatePassword();
   }
-
   
-  var specialChar = window.prompt("What special characters would you like to include in your password?");
+  var upperCaseChoice = window.confirm("Would you like to add uppercase letters to your password?")
 
-  if (charType === ) {
-    window.prompt("Please type in the special characters you would like to add.")
-    if (charType = specialChar) {
-      window.alert("Special characters " + specialChar + " will be added to your password.")
-      
-      } else {
-        window.alert("Please try again.")
-        
-      }
+  if (upperCaseChoice) {
+    window.alert("Thank you, you chose to add uppercase letters to your password.")
+    password = upperCaseChoice += password;
+  } else {
+    window.alert("You chose not to add upper case letters.")
+  }
+
+  var lowerCaseChoice = window.confirm("Would you like to add lowercase letters to your password?")
+
+  if (lowerCaseChoice) {
+    window.alert("Thank you, you chose to add lowercase letters to your password.")
+    password = lowerCaseChoice += password;
+  } else {
+    window.alert("You chose not to add lower case letters.")
+  }
+
+  var numChoice = window.confirm("Would you like to add numbers to your password?")
+
+  if (numChoice) {
+    window.alert("Thank you, you chose to add numbers to your password.")
+    password = numChoice += password;
+  } else {
+    window.alert("You chose not to add numbers to your password.")
+  }
+
+  var specialCharChoice = window.prompt("What special characters would you like to add to your password?");
+
+  if (specialCharChoice) {
+    window.prompt("Thank you,you chose to add special characters to you password.")
+    password = specialCharChoice += password;
   } else {
     window.alert("You chose not to add special characters.")
   }
-  
-  var upperCaseChoice = window.confirm("")
 }
 
 
