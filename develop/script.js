@@ -1,11 +1,10 @@
-// Assignment code here
-
 //Declared variables
-var lowerCaseChar = "abcdefghijklmnopqrstuvwxyz";
 var upperCaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerCaseChar = "abcdefghijklmnopqrstuvwxyz";
 var numberChar = "0123456789";
 var specialChar = "!#$%&()*+,-./:;<>=?@[]^_`|}{~";
-var password = "";
+var pass = "";
+var randomNum = "";
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -21,51 +20,76 @@ function writePassword() {
 
 //Creating password
 var generatePassword = function() {
-  var lengthOfChar = window.prompt("Please choose a password length of 8-128 characters.");
-
-  if (lengthOfChar >= 8 && lengthOfChar <= 128) {
-    window.alert("Thank you, a password of " + lengthOfChar + " characters will be generated, please answer the following questions for your password.");
+  var passLength = window.prompt("Please choose a password length of 8-128 characters.");
+  //
+  if (passLength >= 8 && passLength <= 128) {
+    window.alert("Thank you, a password of " + passLength + " characters will be generated, please answer the following questions for your password.");
   } else {
     window.alert("Please try again.");
   generatePassword();
   }
   
-  var upperCaseChoice = window.confirm("Would you like to add uppercase letters to your password?")
+  var upperCaseChoice = window.confirm("Would you like to add uppercase letters to your password?");
 
+  //Adding or omitting upper case letters
   if (upperCaseChoice) {
-    window.alert("Thank you, you chose to add uppercase letters to your password.")
-    password = upperCaseChoice += password;
+    window.alert("Thank you, you chose to add uppercase letters to your password.");
+    pass = upperCaseChar += pass;
   } else {
-    window.alert("You chose not to add upper case letters.")
+    window.alert("You chose not to add upper case letters.");
   }
 
-  var lowerCaseChoice = window.confirm("Would you like to add lowercase letters to your password?")
+  var lowerCaseChoice = window.confirm("Would you like to add lowercase letters to your password?");
 
+  //Adding or omitting lower case letters
   if (lowerCaseChoice) {
-    window.alert("Thank you, you chose to add lowercase letters to your password.")
-    password = lowerCaseChoice += password;
+    window.alert("Thank you, you chose to add lowercase letters to your password.");
+    pass = lowerCaseChar += pass;
   } else {
-    window.alert("You chose not to add lower case letters.")
+    window.alert("You chose not to add lower case letters.");
   }
 
-  var numChoice = window.confirm("Would you like to add numbers to your password?")
+  var numChoice = window.confirm("Would you like to add numbers to your password?");
 
+  //Adding or omitting numbers
   if (numChoice) {
-    window.alert("Thank you, you chose to add numbers to your password.")
-    password = numChoice += password;
+    window.alert("Thank you, you chose to add numbers to your password.");
+    pass = numberChar += pass;
   } else {
-    window.alert("You chose not to add numbers to your password.")
+    window.alert("You chose not to add numbers to your password.");
   }
 
-  var specialCharChoice = window.prompt("What special characters would you like to add to your password?");
-
+  var specialCharChoice = window.confirm("Would you like to add special characters to your password?");
+  
+  //Adding or omitting special characters
   if (specialCharChoice) {
-    window.prompt("Thank you,you chose to add special characters to you password.")
-    password = specialCharChoice += password;
+    window.alert("Thank you, you chose to add special characters to you password.");
+    pass = specialChar += pass;
   } else {
-    window.alert("You chose not to add special characters.")
+    window.alert("You chose not to add special characters.");
   }
+
+  //Determining if at least one choice was confirmed
+  if (pass) {
+  window.alert("Brewing up your magical password for you...");
+  } else {
+    window.alert("Please select at least one of the 4 options to add characters.");
+    generatePassword();
+  }
+
+var finalize = new Array();
+//Randomize characters for password
+for (let i = 0; i < passLength; i++) {
+  randomNum = Math.floor(Math.random() * pass.length);
+  arrayNum = pass[randomNum];
+  finalize.push(arrayNum);
 }
+
+// Adjust password
+password = finalize.join( " " );
+return password; 
+}
+
 
 
 // Add event listener to generate button
